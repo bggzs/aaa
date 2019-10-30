@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bgg.ssm.dao.UserDao">
+	<select id="findAllTeacher" resultType="com.bgg.ssm.entity.Teacher">
+		select * from user
+	</select>
+	<select id="findTeacherById" parameterType="String" resultType="com.bgg.ssm.entity.Teacher">
+		select * from user where user_id=#{id}
+	</select>
+	<select id="findTable1" parameterType="String" resultType="com.bgg.ssm.entity.table1">
+		select myclass.c_name,teacher.t_name,student.s_name,student.s_class,result.result,result.s_id  from teacher ,myclass,result,student where teacher.t_id=myclass.t_id and myclass.c_id=result.c_id and result.s_id=student.s_id and teacher.t_id=#{t_id}
+	</select>
+	<select id="findTeacherId" parameterType="String" resultType="String">
+		select t_id from teacher where t_name=#{t_name}
+	</select>
+	<insert id="insertClass" parameterType="com.bgg.ssm.entity.insertClass">
+		insert into myclass(c_id,c_name,c_stat,t_id)   values(#{c_id},#{c_name},#{c_stat},#{t_id})
+	</insert>
+	<select id="getAllMachineInfo" resultType="com.bgg.ssm.entity.machine_info">
+		select * from machine_info
+	</select>
+	<select id="getMachineFault" resultType="com.bgg.ssm.entity.machine_fault" parameterType="String">
+		select * from machine_fault where machine_id=#{machine_id}
+	</select>
+	<select id="getFaultMassage" resultType="com.bgg.ssm.entity.fault_info">
+		select * from fault_info
+	</select>
+	<insert id="insertFault" parameterType="com.bgg.ssm.entity.fault_info">
+		insert into fault_info(fault_type,fault_content)  values(#{fault_type},#{fault_content})
+	</insert>
+	<insert id="insertFaultInfo" parameterType="com.bgg.ssm.entity.machine_fault">
+		insert into machine_fault(fault_id,fault_type,fault_special,fault_time,maintenance_personnel,machine_id)  values(#{fault_id},#{fault_type},#{fault_special},#{fault_time},#{maintenance_personnel},#{machine_id})
+	</insert>
+	<insert id="addFaultStat" parameterType="com.bgg.ssm.entity.fault_review">
+				insert into fault_review(fault_id,fault_type,fault_special,fault_time,machine_id,review_stat,maintenance_personnel)  values(#{fault_id},#{fault_type},#{fault_special},#{fault_time},#{machine_id},#{review_stat},#{maintenance_personnel})
+	</insert>
+	<select id="getFaultReview" resultType="com.bgg.ssm.entity.fault_review">
+		select * from fault_review
+	</select>
+	<update id="updateFaultReviewStat" parameterType="String">
+		update fault_review set review_stat='true' where fault_id=#{fault_id}
+	</update>
+</mapper>

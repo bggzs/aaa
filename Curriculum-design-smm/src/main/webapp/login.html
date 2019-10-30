@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-kit.css" rel="stylesheet" />
+    <script type="text/javascript"
+        src="js/jquery.js"></script>
+
+    <script src="js/login.js"></script>
+</head>
+<body class="login-page sidebar-collapse" onload="createCode()">
+    
+    <div class="page-header" filter-color="orange">
+        <div class="page-header-image" style="background-image:url(assets/img/login.jpg)"></div>
+        <div class="container">
+            <div class="col-md-4 content-center">
+                <div class="card card-login card-plain">
+                    <form class="form" method="" action="">
+                        
+                        <div class="content">
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="text" class="form-control" id="account" placeholder="账号">
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons text_caps-small"></i>
+                                </span>
+                                <input type="password" placeholder="密码" id="password" class="form-control" />
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons ui-2_like"></i>
+                                </span>
+                                 <input type="text" placeholder="验证码" class="form-control" id="input1" /><input
+                        type="text" onblur="createCode()" readonly="readonly"
+                        id="checkCode" class="form-control" style="width: 20px" />
+                            </div>
+                        </div>
+
+                        <div class="footer text-center">
+                            <a href="#" class="btn btn-primary btn-round btn-lg btn-block" onclick="Mylogin()">登录</a>
+                        </div>
+                        
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</body>
+</html>
